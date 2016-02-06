@@ -1335,7 +1335,7 @@ def subpathReadFile(ufoPath, *subpath):
     Read the contents of a file.
     """
     path = subpathJoin(ufoPath, *subpath)
-    with open(path, "r") as f:
+    with open(path, "r", encoding="utf-8") as f:
         text = f.read()
     return text
 
@@ -1366,7 +1366,7 @@ def subpathWriteFile(text, ufoPath, *subpath):
         existing = None
 
     if text != existing:
-        with open(path, "w") as f:
+        with open(path, "w", encoding="utf-8") as f:
             f.write(text)
 
 def subpathWritePlist(data, ufoPath, *subpath):
