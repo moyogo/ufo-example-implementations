@@ -1617,7 +1617,7 @@ class SubpathTest(unittest.TestCase):
         self.assertFalse(subpathExists(self.directory, 'nofile.txt'))
 
     def test_subpathReadFile(self):
-        text = 'foo bar™'
+        text = 'foo bar™⁜'
         self.createTestFile(text)
         self.assertEqual(text, subpathReadFile(self.directory, self.filename))
 
@@ -1629,7 +1629,7 @@ class SubpathTest(unittest.TestCase):
                          data)
 
     def test_subpathWriteFile(self):
-        expected_text = 'foo bar™'
+        expected_text = 'foo bar™⁜'
         subpathWriteFile(expected_text, self.directory, self.filename)
         with open(self.filepath, 'r', encoding='utf-8') as f:
             text = f.read()
