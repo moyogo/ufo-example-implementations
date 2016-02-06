@@ -1649,7 +1649,7 @@ class SubpathTest(unittest.TestCase):
 
     def test_subpathRenameDirectory(self):
         dirname = 'tmpdir'
-        dirpath= os.path.join(self.directory, dirname)
+        dirpath = os.path.join(self.directory, dirname)
         os.mkdir(dirpath)
         subpathRenameFile(self.directory, dirname, dirname + "_")
         self.assertTrue(os.path.exists(dirpath + "_"))
@@ -1689,7 +1689,7 @@ class SubpathTest(unittest.TestCase):
             modTime = os.path.getmtime(filepath)
             modTimes[filename] = float('%.1f' % (modTime))
         lines = ['version: %s' % (ufonormalizerVersion)]
-        lines += ['%.1f %s' %(modTimes[filename], filename)
+        lines += ['%.1f %s' % (modTimes[filename], filename)
                   for filename in filenames]
         storeModTimes(lib, modTimes)
         self.assertEqual('\n'.join(lines), lib[modTimeLibKey])
@@ -1697,13 +1697,13 @@ class SubpathTest(unittest.TestCase):
     def test_readModTimes(self):
         num = 5
         lib = {}
-        modTimes ={}
+        modTimes = {}
         lines = ['version: %s' % (ufonormalizerVersion)]
         filenames = [self.filename + str(i) for i in range(num)]
         modTime = float(os.path.getmtime(self.directory))
         for i, filename in enumerate(filenames):
             modTimes[filename] = float('%.1f' % (modTime + i))
-            lines.append('%.1f %s' %(modTime + i, filename))
+            lines.append('%.1f %s' % (modTime + i, filename))
         lib[modTimeLibKey] = '\n'.join(lines)
         self.assertEqual(readModTimes(lib), modTimes)
 
